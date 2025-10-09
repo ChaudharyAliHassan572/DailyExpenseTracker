@@ -1,20 +1,16 @@
-﻿using DailyExpenseTracker.Core.Models.DTOS.Currencies;
+﻿using DailyExpenseTracker.Core.Models.DTOS.Categories;
 
 namespace DailyExpenseTracker.Core.Models.DTOS.Users
 {
-    public class UserProfileResponseDto
+    public class UserResponseDto
     {
         public Guid Id { get; set; }
-        public Guid UserId { get; set; }
-
-        public string Name { get; set; } = string.Empty;
-        public string RegionCode { get; set; } = string.Empty;
-        public string ContactNumber { get; set; } = string.Empty;
-
-        public Guid PreferredCurrencyId { get; set; }
-        public CurrencyResponseDto PreferredCurrency { get; set; }
-
+        public string UserName { get; set; } = string.Empty;
+        public string Email { get; set; } = string.Empty;
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
+        public IList<CategoryResponseDto> Categories { get; set; } = new List<CategoryResponseDto>();
+        public UserProfileResponseDto? UserProfile { get; set; }
     }
 }
+

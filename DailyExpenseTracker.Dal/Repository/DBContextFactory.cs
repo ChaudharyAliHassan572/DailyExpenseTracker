@@ -13,9 +13,7 @@ namespace DailyExpenseTracker.Dal.Repository
 
             var configuration = new ConfigurationBuilder()
                 .SetBasePath(basePath)
-                .AddJsonFile("appsettings.json", optional: true)
-                .AddJsonFile("appsettings.Development.json", optional: true)
-                .AddEnvironmentVariables()
+                .AddJsonFile("appsettings.json", optional: false)
                 .Build();
 
             var connectionString = configuration.GetConnectionString("DefaultConnection");

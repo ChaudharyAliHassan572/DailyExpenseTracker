@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DETSoft.Core.Interfaces
+namespace DETSoft.Core.Services
 {
     internal interface ITagService
     {

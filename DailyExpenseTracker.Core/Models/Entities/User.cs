@@ -16,7 +16,7 @@ namespace DailyExpenseTracker.Core.Models.Entities
         private readonly List<Category> _categories = new();
         public IReadOnlyCollection<Category> Categories => _categories.AsReadOnly();
 
-        private User() { }
+        public User() { }
 
         public User(string userName, string email, string password)
         {

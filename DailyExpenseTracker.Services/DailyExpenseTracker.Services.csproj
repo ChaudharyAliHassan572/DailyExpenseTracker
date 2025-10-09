@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\DailyExpenseTracker.Core\DailyExpenseTracker.Core.csproj" />
+    <ProjectReference Include="..\DailyExpenseTracker.Dal\DailyExpenseTracker.Dal.csproj" />
+  </ItemGroup>
+
 </Project>

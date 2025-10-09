@@ -29,6 +29,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DailyExpenseTracker.Dal\DailyExpenseTracker.Dal.csproj" />
+    <ProjectReference Include="..\DailyExpenseTracker.Services\DailyExpenseTracker.Services.csproj" />
   </ItemGroup>
 
 </Project>

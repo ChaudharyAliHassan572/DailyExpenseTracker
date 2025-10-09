@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using DailyExpenseTracker.Core.Models.DTOS.Users;
 
-namespace DETSoft.Core.Interfaces
+namespace DETSoft.Core.Services
 {
-    internal interface IUserService
+    public interface IUserService
     {
+        Task<IEnumerable<UserResponseDto>> GetAllAsync();
+        Task<UserResponseDto?> GetByIdAsync(Guid id);
+        Task<UserResponseDto> CreateAsync(CreateUserRequestDto dto);
+        Task UpdateAsync(Guid id, UpdateUserRequestDto dto);
+        Task DeleteAsync(Guid id);
     }
 }

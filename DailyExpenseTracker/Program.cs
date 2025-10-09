@@ -1,23 +1,47 @@
 ﻿using DailyExpenseTracker.Dal.Repository;
+using DailyExpenseTracker.Services.Services;
+using DailyExpenseTracker.Core.Models.DTOS.Users;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using System.IO;
 
-// 1. Load appsettings.json
-var configuration = new ConfigurationBuilder()
-    .SetBasePath(Directory.GetCurrentDirectory())
-    .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-    .Build();
+var factory = new DBContextFactory();
+using var context = factory.CreateDbContext(args);
 
-// 2. Get connection string
-var connectionString = configuration.GetConnectionString("DefaultConnection");
+await context.Database.EnsureCreatedAsync();
 
-// 3. Build DbContextOptions
-var optionsBuilder = new DbContextOptionsBuilder<DBContext>();
-optionsBuilder.UseSqlServer(connectionString);
-
-// 4. Create DbContext
-using var context = new DBContext(optionsBuilder.Options);
-
-// Test: ensure it connects
 Console.WriteLine("Connected to database: " + context.Database.GetDbConnection().Database);
+
+var userRepository = new UserRepository(context);
+var userService = new UserService(userRepository);
+
+try
+{
+    var unique1 = Guid.NewGuid().ToString("N").Substring(0, 8);
+    var unique2 = Guid.NewGuid().ToString("N").Substring(0, 8);
+
+    var create1 = new CreateUserRequestDto
+    {
+        UserName = $"tester_{unique1}",
+        Email = $"tester_{unique1}@example.com",
+        Password = "Password123!"
+    };
+
+    var create2 = new CreateUserRequestDto
+    {
+        UserName = $"tester_{unique2}",
+        Email = $"tester_{unique2}@example.com",
+        Password = "Password123!"
+    };
+
+    var user1 = await userService.CreateAsync(create1);
+    var user2 = await userService.CreateAsync(create2);
+
+    Console.WriteLine($"Created users:\n - {user1.Id} | {user1.UserName} | {user1.Email}\n - {user2.Id} | {user2.UserName} | {user2.Email}");
+
+    var all = await userService.GetAllAsync();
+    Console.WriteLine($"Total users now: {all.Count()}");
+}
+catch (Exception ex)
+{
+    Console.WriteLine("Error while Adding Users: " + ex.Message);
+    Console.WriteLine(ex.ToString());
+}
