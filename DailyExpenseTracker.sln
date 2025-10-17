@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DailyExpenseTracker.Dal", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DailyExpenseTracker.Services", "DailyExpenseTracker.Services\DailyExpenseTracker.Services.csproj", "{8F2576D1-2CA0-4696-9C81-E73DB8B2B79A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DailyExpenseTracket.UnitTest", "DailyExpenseTracket.UnitTest\DailyExpenseTracket.UnitTest.csproj", "{8E21B69D-2F35-4F3C-B460-745B1367637B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DailyExpenseTracker.NUnitTesting", "DailyExpenseTracker.NUnitTesting\DailyExpenseTracker.NUnitTesting.csproj", "{2827A696-B9D7-480E-AD22-EA295ECF548A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,10 +35,10 @@ Global
 		{8F2576D1-2CA0-4696-9C81-E73DB8B2B79A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8F2576D1-2CA0-4696-9C81-E73DB8B2B79A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8F2576D1-2CA0-4696-9C81-E73DB8B2B79A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8E21B69D-2F35-4F3C-B460-745B1367637B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8E21B69D-2F35-4F3C-B460-745B1367637B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8E21B69D-2F35-4F3C-B460-745B1367637B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8E21B69D-2F35-4F3C-B460-745B1367637B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2827A696-B9D7-480E-AD22-EA295ECF548A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2827A696-B9D7-480E-AD22-EA295ECF548A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2827A696-B9D7-480E-AD22-EA295ECF548A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2827A696-B9D7-480E-AD22-EA295ECF548A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

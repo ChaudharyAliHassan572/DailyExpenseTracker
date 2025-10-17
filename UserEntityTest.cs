@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using DailyExpenseTracker.Dal.Repository;
 using DailyExpenseTracker.Core.Models.Entities;
 using DailyExpenseTracker.Services.Services;
@@ -115,7 +115,7 @@ namespace DailyExpenseTracker.UnitTesting
             Assert.AreEqual("updated@example.com", updated!.Email);
         }
 
-        [TestMethod]
+        [TestFixture]
         public async Task Delete_Removes_User()
         {
             using var ctx = TestHelpers.CreateInMemoryContext();

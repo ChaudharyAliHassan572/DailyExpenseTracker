@@ -1,15 +1,12 @@
-﻿using System;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Microsoft.EntityFrameworkCore;
-using DailyExpenseTracker.Dal.Repository;
+﻿using DailyExpenseTracker.Core.Models.DTOS.Users;
 using DailyExpenseTracker.Core.Models.Entities;
+using DailyExpenseTracker.Dal.Repository;
 using DailyExpenseTracker.Services.Services;
-using DailyExpenseTracker.Core.Models.DTOS.Users;
+using Microsoft.EntityFrameworkCore;
 
-namespace DailyExpenseTracker.UnitTesting
+namespace DailyExpenseTracker.NUnitTesting
 {
+
     internal static class TestHelpers
     {
         public static DBContext CreateInMemoryContext(string? dbName = null)
@@ -34,9 +31,9 @@ namespace DailyExpenseTracker.UnitTesting
             await repo.AddAsync(user);
 
             var fetched = await repo.GetByIdAsync(user.Id);
-            Assert.IsNotNull(fetched);
-            Assert.AreEqual(user.Id, fetched!.Id);
-            Assert.AreEqual("repo_user", fetched.UserName);
+            Assert.That(fetched, Is.Not.Null);
+            Assert.That(fetched!.Id, Is.EqualTo(user.Id));
+            Assert.That(fetched.UserName, Is.EqualTo("repo_user"));
         }
 
         [Test]
@@ -49,7 +46,7 @@ namespace DailyExpenseTracker.UnitTesting
             await repo.AddAsync(new User("u2", "u2@example.com", "Password123!"));
 
             var all = await repo.GetAllAsync();
-            Assert.AreEqual(2, all.Count());
+            Assert.That(all.Count(), Is.EqualTo(2));
         }
 
         [Test]
@@ -64,7 +61,7 @@ namespace DailyExpenseTracker.UnitTesting
             await repo.DeleteAsync(user.Id);
 
             var fetched = await repo.GetByIdAsync(user.Id);
-            Assert.IsNull(fetched);
+            Assert.That(fetched, Is.Null);
         }
     }
 
@@ -86,9 +83,9 @@ namespace DailyExpenseTracker.UnitTesting
             });
 
             var fetched = await service.GetByIdAsync(created.Id);
-            Assert.IsNotNull(fetched);
-            Assert.AreEqual(created.Id, fetched!.Id);
-            Assert.AreEqual("svc_user", fetched.UserName);
+            Assert.That(fetched, Is.Not.Null);
+            Assert.That(fetched!.Id, Is.EqualTo(created.Id));
+            Assert.That(fetched.UserName, Is.EqualTo("svc_user"));
         }
 
         [Test]
@@ -112,8 +109,8 @@ namespace DailyExpenseTracker.UnitTesting
             });
 
             var updated = await service.GetByIdAsync(created.Id);
-            Assert.IsNotNull(updated);
-            Assert.AreEqual("updated@example.com", updated!.Email);
+            Assert.That(updated, Is.Not.Null);
+            Assert.That(updated!.Email, Is.EqualTo("updated@example.com"));
         }
 
         [Test]
@@ -133,7 +130,8 @@ namespace DailyExpenseTracker.UnitTesting
             await service.DeleteAsync(created.Id);
 
             var after = await service.GetByIdAsync(created.Id);
-            Assert.IsNull(after);
+            Assert.That(after, Is.Null);
         }
     }
+
 }
